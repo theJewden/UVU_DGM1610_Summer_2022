@@ -1,14 +1,14 @@
 using System;
 					
 public class Program
-{
+{ // 1
 	public Operations myOperator;
     public OperationsTwo myOperatorTwo;
 	public SwitchOne mySwitch;
 	public AntCode myAC;
 	
 	public void Main()
-	{ 
+	{ //2
 		myOperator = new Operations();
         myOperatorTwo = new OperationsTwo();
 		mySwitch = new SwitchOne();
@@ -31,34 +31,35 @@ public class Program
 		mySwitch.switchFun(dieRoll);
 
 
-	} 
-}
+	} //2
+} //1
 
-public class Operations { 
-	public void DoMath (int value, int value2) {
+public class Operations { //3
+	public void DoMath (int value, int value2) { //4
 		var number = value + value2;
 		Console.WriteLine(number);
-	}
-
-public class OperationsTwo {
-    public void MoreMath (int value, int value2, int value3, bool value4) {
+	} //4
+}//3
+public class OperationsTwo { //5
+    public void MoreMath (int value, int value2, int value3, bool value4) { //6
         int value5 = 1; // Declare Values
         var number = ((value + value2) - value3) * value5; 
-            if (value4 == true) { //Find if value4 (true or false)
+            if (value4 == true) { //Find if value4 (true or false) //7
                 value5 = 2;
             } else {
                 value5 = 1;
-            }
+            } //7
         Console.WriteLine(number); // Write line in console
-    }
-}
+    } //6
+}//5
+
 
 // Switch Statement
 
-public class SwitchOne {
-	public void switchfun(int powerLevel) {
+public class SwitchOne { //8
+	public void switchFun(int powerLevel) {//9
 		Console.WriteLine("I shall now evaluate your power level.");
-			switch(powerLevel) {
+			switch(powerLevel) {//10
 				case 0:
 					Console.WriteLine("You are very weak.");
 					break;
@@ -80,35 +81,30 @@ public class SwitchOne {
 				case 6:
 					Console.WriteLine("It's over 9000!!!");
 					break;
-			}
+			}//10
 
-	}
+	}//9
 
-}
+}//8
 
-
-
-
-
-    }
-
-
-	public class AntCode {
+	public class AntCode { //11
 	
-	public void Compare (int value, int value2) {
-		if(value > value2) {
+	public void Compare (int value, int value2) {//12
+		if(value > value2) { //13
 			Console.WriteLine("True, " + value + " is greater.");
-		} else {
+		} else { 
 			Console.WriteLine("False," + value2 + " is greater.");
-		}
-	}
+		}//13
+	}//12
 	
-	public void CheckPassword (string password) {
-		if(password == "OU812") {
+	public void CheckPassword (string password) {//14
+		if(password == "OU812") {//15
 			Console.WriteLine("Correct Password");
 		} else {
 			Console.WriteLine("Incorrect Password");	
-		}
-	}
+		}//15
+	}//14
+
+}//11
 
 }	
