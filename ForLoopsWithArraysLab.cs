@@ -31,7 +31,7 @@ public class Program
         Console.WriteLine("Today's Milkshake Flavors: ");
 
             //For Loop
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < milkShakes.Length; i++) {
             Console.WriteLine(milkShakes[i]);
         }
 
