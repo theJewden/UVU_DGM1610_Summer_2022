@@ -4,12 +4,9 @@ using System;
 public class Program {
     public void Main() {
             //Define Vars
-        Random random = new Random();
-        int dieRoll = random.Next(1,7);
         string[] alphaResponse = {"a","b","c","d"};
         string[] playerClass = {"Undecided", "Warrior", "Mage", "Brawler", "Archer"}; // Player Classes
         int storedPlayerClass = 0;
-        string[] warriorMoveSet
 
             //Get name and class
         Console.WriteLine("Welcome to Dungeon Crawlers I am your host, \"The Unembodied\". What is your name hero? (Type your name below)");
@@ -53,6 +50,5 @@ public class Program {
                 break;
 
         }
-        //do 
     }
 }
