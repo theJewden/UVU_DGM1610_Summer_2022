@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cf8ac18072d8d45955800c7d3bf45e, type: 3}
+  m_Name: PlayerOne
+  m_EditorClassIdentifier: 
+  playerName: Stan
+  playerHealth: 100
+  playerHealthMax: 1000
+  playerLevel: 5
+  playerLevelMax: 100
