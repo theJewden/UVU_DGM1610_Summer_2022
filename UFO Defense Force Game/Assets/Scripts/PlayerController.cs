@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     public float verticalInput;
     public float speed = 25;
     public float offScreenX = 35;
+    public bool powerUped = false;
+    public string powerUp = "noPower"; // "UnlimAmmo" means the unlimited ammo powerup is active
 
     public Transform blaster;
     public GameObject laserBolt;
+    public GameObject thePowerUp;
 
     void Update()
     {
@@ -42,10 +45,20 @@ public class PlayerController : MonoBehaviour
             Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
         }
 
+        // Create Powerup if I hit enter
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Instantiate(thePowerUp, new Vector3(0,0,0), thePowerUp.transform.rotation);
+        }
+
 
     }
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+       if (other.isTrigger)
+        {
+            Destroy(other.gameObject);
+        }
+
     }
 }

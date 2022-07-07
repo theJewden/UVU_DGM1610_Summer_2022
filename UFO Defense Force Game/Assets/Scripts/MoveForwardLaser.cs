@@ -9,18 +9,30 @@ public class MoveForwardLaser : MonoBehaviour
     public int laserNumber;
     public int totalLaserNumber = 1;
     public float outOfBounds = 16;
+    public GameObject player;
 
     void Awake()
     {
 
         GameObject[] laserShot = GameObject.FindGameObjectsWithTag("Laser");
+        player = GameObject.FindWithTag("Player");
         laserNumber = laserShot.Length;
 
     }
 
     private void Start()
     {
-        if (laserNumber > totalLaserNumber)
+        //If the player doesn't have the unlim power up only shoot one bullet at a time
+        if (player.GetComponent<PlayerController>().powerUp == "UlimAmmo")
+        {
+            totalLaserNumber = 10;
+        } else
+        {
+            totalLaserNumber = 1;
+        }
+
+
+            if (laserNumber > totalLaserNumber)
         {
             Destroy(gameObject);
         }
@@ -30,20 +42,18 @@ public class MoveForwardLaser : MonoBehaviour
     void Update()
     {
 
-        if (laserNumber <= totalLaserNumber)
-        {
-
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
-
-            if (transform.position.z > outOfBounds)
+            if (laserNumber <= totalLaserNumber)
             {
-                Destroy(gameObject);
+
+                transform.Translate(Vector3.up * Time.deltaTime * speed);
+
+                if (transform.position.z > outOfBounds)
+                {
+                    Destroy(gameObject);
+                }
+
             }
-
-        }
-
-
-        
+            
 
     }
 }
