@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     public float speed = 25;
     public float offScreenX = 35;
 
+    public Transform blaster;
+
+    public GameObject laserBolt;
+
 
     void Start()
     {
@@ -38,6 +42,13 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x > offScreenX)
         {
             transform.position = new Vector3(offScreenX, transform.position.y, transform.position.z);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            //Create Laserbolt at the blaster position
+            Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
         }
     }
 }
