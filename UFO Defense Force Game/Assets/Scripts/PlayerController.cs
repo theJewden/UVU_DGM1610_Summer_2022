@@ -12,16 +12,7 @@ public class PlayerController : MonoBehaviour
     public float offScreenX = 35;
 
     public Transform blaster;
-
     public GameObject laserBolt;
-
-
-    void Start()
-    {
-
-
-        
-    }
 
     void Update()
     {
@@ -50,5 +41,11 @@ public class PlayerController : MonoBehaviour
             //Create Laserbolt at the blaster position
             Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
         }
+
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
     }
 }
