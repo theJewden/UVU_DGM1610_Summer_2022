@@ -244,6 +244,7 @@ MonoBehaviour:
   blaster: {fileID: 1613603588}
   laserBolt: {fileID: 2154200238072218058, guid: 0743231db4c2b0044b5b71fa34486323, type: 3}
   thePowerUp: {fileID: 2701335722033325393, guid: fdd0bce2e70b97444951c43ba8421f3a, type: 3}
+  powerUpTimerSet: 0
 --- !u!54 &657974262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -444,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883288778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 3.72}
+  m_LocalPosition: {x: 0, y: 1, z: 9.59}
   m_LocalScale: {x: 3.8, y: 0.586226, z: 3.8}
   m_ConstrainProportionsScale: 1
   m_Children: []

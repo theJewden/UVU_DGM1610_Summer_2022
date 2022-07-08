@@ -63,6 +63,7 @@ public class UlimAmmoPowerUpBehavior : MonoBehaviour
         if (transform.position.z < outOfBounds)
         {
             Destroy(gameObject);
+            player.GetComponent<PlayerController>().inbetweenPowerTimer = true;
         }
 
     }
@@ -70,5 +71,7 @@ public class UlimAmmoPowerUpBehavior : MonoBehaviour
     private void OnTriggerEnter(Collider player)
     {
         player.GetComponent<PlayerController>().powerUp = "UlimAmmo";
+        player.GetComponent<PlayerController>().powerUpTimerSet = true;
+
     }
 }
