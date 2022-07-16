@@ -22,14 +22,16 @@ public class PlayerController : MonoBehaviour
     private float powerUpTimerSeconds = 10;
     private float powerUpTimerSecondsMax = 10;
     public bool powerUpTimerSet = false;
-    public bool inbetweenPowerTimer = true;
-    private float inbetweenPowerSeconds = 748;
-    private float inbeweenPlaceHold = 748;
-    private float inbetweenPowerSecondsMin = 10;
-    private float inbetweenPowerSecondsMax = 30;
     private float spawnPowerX;
     private float spawnPowerZ = 16.0f;
     private float spawnPowerXMax = 34.0f;
+    private float powerUpSpawnRate;
+
+    private void Start()
+    {
+        powerUpSpawnRate = Random.Range(10, 30);
+        InvokeRepeating("SpawnPowerUp",powerUpSpawnRate, powerUpSpawnRate);
+    }
 
 
     void Update()
@@ -60,10 +62,6 @@ public class PlayerController : MonoBehaviour
             Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
         }
 
-
-
-
-
         // Timer for power up duration
         if (powerUpTimerSet == true)
         {
@@ -78,35 +76,15 @@ public class PlayerController : MonoBehaviour
                 powerUp = "noPower";
                 powerUpTimerSet = false;
                 powerUpTimerSeconds = powerUpTimerSecondsMax;
-                inbetweenPowerTimer = true;
                 Debug.Log("Time Ended!");
             }
 
-        }
-
-        //Spawn Powerup
-            //Start Timer
-        if (powerUp == "noPower" && inbetweenPowerTimer == true && inbetweenPowerSeconds == inbeweenPlaceHold)
-        {
-            inbetweenPowerSeconds = Random.Range(inbetweenPowerSecondsMin, inbetweenPowerSecondsMax);
-            inbetweenPowerTimer = false;
+            // Update inbetween spawnrate of power up
+            powerUpSpawnRate = Random.Range(10, 30);
 
         }
 
-        if(inbetweenPowerSeconds > 0 && inbetweenPowerSeconds != inbeweenPlaceHold) 
-        {
-            inbetweenPowerSeconds -= Time.deltaTime;
-            Debug.Log(inbetweenPowerSeconds);
 
-        } else if (inbetweenPowerSeconds < 0)
-        {
-
-            //Spawn powerup in random place
-            spawnPowerX = Random.Range(-spawnPowerXMax, spawnPowerXMax);
-            Instantiate(thePowerUp, new Vector3(spawnPowerX, 0, spawnPowerZ), thePowerUp.transform.rotation);
-            inbetweenPowerSeconds = inbeweenPlaceHold;
-            Debug.Log("Spawn Powerup");
-        }
 
     }
     private void OnTriggerEnter(Collider other)
@@ -116,6 +94,23 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+    }
+
+    private void SpawnPowerUp()
+    {
+        //Spawn Powerup
+        if (powerUp == "noPower")
+        {
+
+            //Spawn powerup in random place
+            spawnPowerX = Random.Range(-spawnPowerXMax, spawnPowerXMax);
+            Instantiate(thePowerUp, new Vector3(spawnPowerX, 0, spawnPowerZ), thePowerUp.transform.rotation);
+            Debug.Log("Spawn Powerup");
+
+        } else if (powerUp != "noPower")
+        {
+            Debug.Log("There is already a powerup so none shall spawn");
+        }
     }
 
 

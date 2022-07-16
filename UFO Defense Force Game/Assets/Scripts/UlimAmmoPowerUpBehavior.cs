@@ -63,7 +63,6 @@ public class UlimAmmoPowerUpBehavior : MonoBehaviour
         if (transform.position.z < outOfBounds)
         {
             Destroy(gameObject);
-            player.GetComponent<PlayerController>().inbetweenPowerTimer = true;
         }
 
     }
