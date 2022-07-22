@@ -7,18 +7,13 @@ public class EnemySpawnManager : MonoBehaviour
     public GameObject[] ufoPrefabs; // Array to store UFO ships
     public int ufoIndex;
     private float ufoSpawnX;
-    private float ufoSpawnXRange = 32.0f;
+    private float ufoSpawnXRange = 20.0f;
     private float startDelay = 2f;
     private float spawnInterval = 1.5f;
 
     void Start()
     {
         InvokeRepeating("SpawnRandomUFO", startDelay, spawnInterval);
-    }
-
-    void Update()
-    {
-       
     }
 
     void SpawnRandomUFO()

@@ -42,6 +42,12 @@ public class GameController : MonoBehaviour
             health = maxHealth;
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+            Debug.Log("Quit Game!");
+        }
+
     }
 
     public void AdjustHealth(int amount) // Adjust the health
@@ -52,8 +58,16 @@ public class GameController : MonoBehaviour
 
     public void AdjustScore (int amount) // Adjust the Score
     {
-        score += amount;
+
+        if(score+amount >= 0)
+        {
+            score += amount;
+        } else
+        {
+            score = 0;
+        }
         UpdateText();
+
     }
 
     public void AdjustMaxHealth(int amount) // Adjusts the max health

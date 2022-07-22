@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public float speed = 25;
-    public float offScreenX = 35;
+    public float offScreenX = 24;
     public bool powerUped = false;
     public string powerUp = "noPower"; // "UnlimAmmo" means the unlimited ammo powerup is active
 
@@ -117,8 +117,6 @@ public class PlayerController : MonoBehaviour
             }
         }
        
-
-
 
     }
     private void OnTriggerEnter(Collider other)

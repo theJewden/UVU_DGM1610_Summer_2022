@@ -14,7 +14,11 @@ public class MoveForwardShip : MonoBehaviour
 
         if (transform.position.z < outOfBounds)
         {
+            int scoreAmount = gameObject.GetComponent<CollisionDetect>().scoreAmount;
+            GameObject gameController = gameObject.GetComponent<CollisionDetect>().gameController;
+            gameController.GetComponent<GameController>().AdjustScore(-scoreAmount);
             Destroy(gameObject);
+            
         }
     }
 }
