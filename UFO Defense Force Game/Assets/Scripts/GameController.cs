@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public int Score = score;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
+    public GameObject gameOverText;
 
     private void Awake()
     {
@@ -30,8 +31,7 @@ public class GameController : MonoBehaviour
 
         if (Health <= 0)
         {
-            // If player fully dies... pause game FOR GOOD
-            Time.timeScale = 0;
+            EndGame(true);
         } else
         {
             Time.timeScale = 1;
@@ -67,5 +67,15 @@ public class GameController : MonoBehaviour
     {
         scoreText.text = "Score: " + score;
         healthText.text = "Health: " + health + "/"+ maxHealth;
+    }
+
+    public void EndGame(bool isGameOver)
+    {
+        if (isGameOver)
+        {
+            // If player fully dies... pause game FOR GOOD
+            Time.timeScale = 0;
+            gameOverText.SetActive(true);
+        }
     }
 }

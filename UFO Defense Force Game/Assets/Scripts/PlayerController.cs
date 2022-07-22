@@ -29,14 +29,16 @@ public class PlayerController : MonoBehaviour
 
     // Player In Damage Vars
     public bool playerInDamage = false;
-    public float isHurtTime = 2.0f;
+    public float isHurtTime;
+    private float isHurtTimeMax = 1.0f;
     private Color isHurtColor = Color.red;
     private Color isNormalColor;
     private bool isHurtTimerSet = false;
 
     private void Start()
     {
-        isNormalColor = gameObject.GetComponent<Material>().color;
+        isNormalColor = gameObject.GetComponent<Renderer>().material.color;
+        isHurtTime = isHurtTimeMax;
         powerUpSpawnRate = Random.Range(10, 30);
         InvokeRepeating("SpawnPowerUp",powerUpSpawnRate, powerUpSpawnRate);
     }
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour
             } else
             {
                 playerInDamage = false;
+                isHurtTime = isHurtTimeMax;
                 isHurtTimerSet = false;
                 gameObject.GetComponent<Renderer>().material.color = isNormalColor;
             }
