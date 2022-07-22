@@ -27,8 +27,16 @@ public class PlayerController : MonoBehaviour
     private float spawnPowerXMax = 34.0f;
     private float powerUpSpawnRate;
 
+    // Player In Damage Vars
+    public bool playerInDamage = false;
+    public float isHurtTime = 2.0f;
+    private Color isHurtColor = Color.red;
+    private Color isNormalColor;
+    private bool isHurtTimerSet = false;
+
     private void Start()
     {
+        isNormalColor = gameObject.GetComponent<Material>().color;
         powerUpSpawnRate = Random.Range(10, 30);
         InvokeRepeating("SpawnPowerUp",powerUpSpawnRate, powerUpSpawnRate);
     }
@@ -55,34 +63,57 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(offScreenX, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (playerInDamage)
         {
-
-            //Create Laserbolt at the blaster position
-            Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
-        }
-
-        // Timer for power up duration
-        if (powerUpTimerSet == true)
-        {
-            
-            if (powerUpTimerSeconds > 0)
+            if(!isHurtTimerSet)
             {
-                powerUpTimerSeconds -= 1 * Time.deltaTime;
-                Debug.Log(powerUpTimerSeconds);
-
-            } else if(powerUpTimerSeconds <= 0)
-            {
-                powerUp = "noPower";
-                powerUpTimerSet = false;
-                powerUpTimerSeconds = powerUpTimerSecondsMax;
-                Debug.Log("Time Ended!");
+                isHurtTimerSet = true;
+                gameObject.GetComponent<Renderer>().material.color = isHurtColor;
             }
 
-            // Update inbetween spawnrate of power up
-            powerUpSpawnRate = Random.Range(10, 30);
+            if(isHurtTime > 0)
+            {
+                isHurtTime -= 1 * Time.deltaTime;
+            } else
+            {
+                playerInDamage = false;
+                isHurtTimerSet = false;
+                gameObject.GetComponent<Renderer>().material.color = isNormalColor;
+            }
+        } else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
 
+                //Create Laserbolt at the blaster position
+                Instantiate(laserBolt, blaster.transform.position, laserBolt.transform.rotation);
+            }
+
+            // Timer for power up duration
+            if (powerUpTimerSet)
+            {
+
+                if (powerUpTimerSeconds > 0)
+                {
+                    powerUpTimerSeconds -= 1 * Time.deltaTime;
+                    Debug.Log(powerUpTimerSeconds);
+
+                }
+                else if (powerUpTimerSeconds <= 0)
+                {
+                    powerUp = "noPower";
+                    powerUpTimerSet = false;
+                    powerUpTimerSeconds = powerUpTimerSecondsMax;
+                    Debug.Log("Time Ended!");
+                }
+
+                // Update inbetween spawnrate of power up
+                powerUpSpawnRate = Random.Range(10, 30);
+
+            }
         }
+       
 
 
 
@@ -112,6 +143,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("There is already a powerup so none shall spawn");
         }
     }
+
 
 
 
