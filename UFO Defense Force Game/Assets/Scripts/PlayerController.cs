@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public float speed = 25;
-    public float offScreenX = 24;
+    public float offScreenX = 18;
     public bool powerUped = false;
     public string powerUp = "noPower"; // "UnlimAmmo" means the unlimited ammo powerup is active
 
@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public Transform blaster;
     public GameObject laserBolt;
     public GameObject thePowerUp;
+    public GameObject powerMusic;
+    public GameObject normalMusic;
+    public GameObject gameController;
 
     //Spawn Powerup Variables
     private float powerUpTimerSeconds = 10;
@@ -24,14 +27,17 @@ public class PlayerController : MonoBehaviour
     public bool powerUpTimerSet = false;
     private float spawnPowerX;
     private float spawnPowerZ = 16.0f;
-    private float spawnPowerXMax = 34.0f;
+    private float spawnPowerXMax = 18.0f;
     private float powerUpSpawnRate;
+    private bool powerMusicCheck = false;
+    private int dieRoll;
 
     // Player In Damage Vars
     public bool playerInDamage = false;
     public float isHurtTime;
     private float isHurtTimeMax = 1.0f;
     private Color isHurtColor = Color.red;
+    private Color isPowerUpAmmo = Color.green;
     private Color isNormalColor;
     private bool isHurtTimerSet = false;
 
@@ -41,6 +47,7 @@ public class PlayerController : MonoBehaviour
         isHurtTime = isHurtTimeMax;
         powerUpSpawnRate = Random.Range(10, 30);
         InvokeRepeating("SpawnPowerUp",powerUpSpawnRate, powerUpSpawnRate);
+        gameController = GameObject.Find("GameController");
     }
 
 
@@ -49,6 +56,8 @@ public class PlayerController : MonoBehaviour
         //Initalize to recieve values from keybindings
         horizontalInput = Input.GetAxis("Horizontal");
 
+        spawnPowerX = Random.Range(-spawnPowerXMax, spawnPowerXMax);
+        dieRoll = Random.Range(1, 7);
 
         //Move the Player
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
@@ -100,7 +109,20 @@ public class PlayerController : MonoBehaviour
                 if (powerUpTimerSeconds > 0)
                 {
                     powerUpTimerSeconds -= 1 * Time.deltaTime;
-                    Debug.Log(powerUpTimerSeconds);
+                    gameController.GetComponent<GameController>().isPowerUpActive = true;
+
+                    if (gameObject.GetComponent<Renderer>().material.color != isPowerUpAmmo)
+                    {
+                        gameObject.GetComponent<Renderer>().material.color = isPowerUpAmmo;
+                    }
+
+                    if(!powerMusicCheck)
+                    {
+                        powerMusic.SetActive(true);
+                        normalMusic.SetActive(false);
+                        powerMusicCheck = true;
+
+                    }
 
                 }
                 else if (powerUpTimerSeconds <= 0)
@@ -108,6 +130,11 @@ public class PlayerController : MonoBehaviour
                     powerUp = "noPower";
                     powerUpTimerSet = false;
                     powerUpTimerSeconds = powerUpTimerSecondsMax;
+                    gameObject.GetComponent<Renderer>().material.color = isNormalColor;
+                    gameController.GetComponent<GameController>().isPowerUpActive = false;
+                    powerMusic.SetActive(false);
+                    normalMusic.SetActive(true);
+                    powerMusicCheck = false;
                     Debug.Log("Time Ended!");
                 }
 
@@ -133,11 +160,16 @@ public class PlayerController : MonoBehaviour
         //Spawn Powerup
         if (powerUp == "noPower")
         {
+            if (dieRoll >= 5)
+            {
+                Instantiate(thePowerUp, new Vector3(spawnPowerX, 0, spawnPowerZ), thePowerUp.transform.rotation);
+                Debug.Log("Spawn Powerup");
 
-            //Spawn powerup in random place
-            spawnPowerX = Random.Range(-spawnPowerXMax, spawnPowerXMax);
-            Instantiate(thePowerUp, new Vector3(spawnPowerX, 0, spawnPowerZ), thePowerUp.transform.rotation);
-            Debug.Log("Spawn Powerup");
+            } else
+            {
+                Debug.Log("PowerUp Missed the Die Roll :(");
+            }
+
 
         } else if (powerUp != "noPower")
         {

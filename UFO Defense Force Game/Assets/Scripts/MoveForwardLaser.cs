@@ -10,6 +10,7 @@ public class MoveForwardLaser : MonoBehaviour
     public int totalLaserNumber = 1;
     public float outOfBounds = 16;
     public GameObject player;
+    private string laserType = "LaserOne";
 
     void Awake()
     {
@@ -17,6 +18,20 @@ public class MoveForwardLaser : MonoBehaviour
         GameObject[] laserShot = GameObject.FindGameObjectsWithTag("Laser");
         player = GameObject.FindWithTag("Player");
         laserNumber = laserShot.Length;
+
+        int randomChoice = Random.Range(0, 3);
+        switch (randomChoice)
+        {
+            case 0:
+                laserType = "LaserOne";
+                break;
+            case 1:
+                laserType = "LaserTwo";
+                break;
+            case 2:
+                laserType = "LaserThree";
+                break;
+        }
 
     }
 
@@ -34,7 +49,11 @@ public class MoveForwardLaser : MonoBehaviour
 
             if (laserNumber > totalLaserNumber)
         {
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>().Play("NoAmmo");
             Destroy(gameObject);
+        } else
+        {
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>().Play(laserType);
         }
     }
 

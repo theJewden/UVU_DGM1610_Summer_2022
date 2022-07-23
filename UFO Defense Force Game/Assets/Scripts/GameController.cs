@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameController : MonoBehaviour
@@ -12,9 +13,14 @@ public class GameController : MonoBehaviour
     public int Health = health;
     public int MaxHealth = maxHealth;
     public int Score = score;
+    public bool restartGame = false;
+    public bool isPowerUpActive = false;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
     public GameObject gameOverText;
+    public GameObject normalMusic;
+    public GameObject gameOverMusic;
+    public GameObject powerUpMusic;
 
     private void Awake()
     {
@@ -29,7 +35,7 @@ public class GameController : MonoBehaviour
         MaxHealth = maxHealth;
         Score = score;
 
-        if (Health <= 0)
+        if (Health <= 0 && restartGame != true)
         {
             EndGame(true);
         } else
@@ -90,6 +96,10 @@ public class GameController : MonoBehaviour
             // If player fully dies... pause game FOR GOOD
             Time.timeScale = 0;
             gameOverText.SetActive(true);
+            normalMusic.SetActive(false);
+            powerUpMusic.SetActive(false);
+            gameOverMusic.SetActive(true);
+
         }
     }
 }

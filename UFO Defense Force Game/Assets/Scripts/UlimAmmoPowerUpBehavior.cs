@@ -11,6 +11,7 @@ public class UlimAmmoPowerUpBehavior : MonoBehaviour
     private bool createPowerUp = true;
     private int numPlayer;
     private GameObject player;
+    
 
 
     private void Awake()
@@ -52,6 +53,8 @@ public class UlimAmmoPowerUpBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
+
+
     }
 
     // Update is called once per frame
@@ -71,6 +74,7 @@ public class UlimAmmoPowerUpBehavior : MonoBehaviour
     {
         player.GetComponent<PlayerController>().powerUp = "UlimAmmo";
         player.GetComponent<PlayerController>().powerUpTimerSet = true;
+        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>().Play("PowerUp");
 
     }
 }
