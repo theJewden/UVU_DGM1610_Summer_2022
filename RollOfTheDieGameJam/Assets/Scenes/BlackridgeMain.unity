@@ -9863,6 +9863,15 @@ MonoBehaviour:
   Height: 12
   X: 0
   Y: 0
+  isPlayerInRoom: 0
+  leftDoor: {fileID: 0}
+  rightDoor: {fileID: 0}
+  topDoor: {fileID: 0}
+  bottomDoor: {fileID: 0}
+  doors: []
+  leftWall: {fileID: 0}
+  rightWall: {fileID: 0}
+  bottomWall: {fileID: 0}
 --- !u!1 &839573933
 GameObject:
   m_ObjectHideFlags: 0
@@ -16047,7 +16056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd179e9454c6a504aaa60ee90bfd7dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadedRooms: []
 --- !u!114 &1408264461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19202,6 +19210,37 @@ MonoBehaviour:
   floorFour: {fileID: 190674990, guid: f66290b0c7e2ff940a42d9e732ad26ad, type: 3}
   floorFive: {fileID: -92067407, guid: f66290b0c7e2ff940a42d9e732ad26ad, type: 3}
   floorSix: {fileID: -285258426, guid: f66290b0c7e2ff940a42d9e732ad26ad, type: 3}
+--- !u!1 &1637836164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637836165}
+  m_Layer: 0
+  m_Name: ItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637836165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637836164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -60.60613, y: 3.6206489, z: -0.7270133}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1655894628
 GameObject:
   m_ObjectHideFlags: 0
