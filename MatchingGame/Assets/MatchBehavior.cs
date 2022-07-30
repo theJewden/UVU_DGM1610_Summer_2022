@@ -13,7 +13,7 @@ public class MatchBehavior : MonoBehaviour
         idObj = GetComponent<IDContainer>().idObj;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         var otherID = idObj; //Temp Var
 
