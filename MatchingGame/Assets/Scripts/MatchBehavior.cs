@@ -31,9 +31,11 @@ public class MatchBehavior : MonoBehaviour
         {
             if (otherID == idObj)
             {
+                Debug.Log("Match!");
                 matchEvent.Invoke(); // If they have the same ID they match
             } else
             {
+                Debug.Log("NoMatch!");
                 noMatchEvent.Invoke(); // If they do not have the same ID they did not match
                 yield return new WaitForSeconds(0.5f);
                 noMatchDelayedEvent.Invoke();

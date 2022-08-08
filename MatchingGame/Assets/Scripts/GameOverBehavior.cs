@@ -7,12 +7,7 @@ public class GameOverBehavior : MonoBehaviour
 {
     public UnityEvent gameOver;
     public UnityEvent gameResume;
-    public GameObject player;
 
-    private void Awake()
-    {
-        player = GameObject.Find("Player");
-    }
 
     public void GameOver()
     {
@@ -24,7 +19,6 @@ public class GameOverBehavior : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        player.transform.position = Vector3.zero;
         gameResume.Invoke();
     }
 
