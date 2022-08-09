@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextBehavior : MonoBehaviour
+public class TextBehavior : MonoBehaviour // Should've been HighscoreBehavior with all the difference in here
 {
     //Create Vars
     private int score;

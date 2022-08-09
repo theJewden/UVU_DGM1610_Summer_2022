@@ -8,11 +8,6 @@ public class IDContainer : MonoBehaviour
     public bool isRandom = true;
     public int currentColor;
 
-    private void Awake()
-    {
-        ChangeColor(idObj.color);
-    }
-
 
     public void ChangeColor (Color color)
     {

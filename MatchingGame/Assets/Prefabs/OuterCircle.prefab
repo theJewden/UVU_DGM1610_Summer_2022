@@ -234,6 +234,8 @@ GameObject:
   - component: {fileID: -1611918405837254535}
   - component: {fileID: 7683437847737725107}
   - component: {fileID: 6019023291583251939}
+  - component: {fileID: -8839292333759069112}
+  - component: {fileID: -768325138764726133}
   m_Layer: 7
   m_Name: OuterCircle
   m_TagString: Untagged
@@ -453,7 +455,19 @@ MonoBehaviour:
         m_CallState: 2
   noMatchEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -768325138764726133}
+        m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WrongMatch
+          m_BoolArgument: 0
+        m_CallState: 2
   noMatchDelayedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -471,3 +485,29 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.653913
   m_Center: {x: 0.12347954, y: 0, z: 0}
+--- !u!114 &-8839292333759069112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557552102653794975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea1217d8ed4ffc4ebe4cf909fb10504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 0}
+--- !u!114 &-768325138764726133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557552102653794975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417a5a242e6002149bd9eacd0a93938b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioController: {fileID: 0}

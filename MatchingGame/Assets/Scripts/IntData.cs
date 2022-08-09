@@ -17,7 +17,7 @@ public class IntData : ScriptableObject
 
         if(highScore >= num)
         {
-            return;
+            gameData.GetComponent<GameData>().highScoreInt = highScore;
         } else
         {
             highScore = num;
