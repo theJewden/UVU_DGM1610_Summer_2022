@@ -25,6 +25,11 @@ public class CorBehavior : MonoBehaviour
         startEvent.Invoke();
     }
 
+    public void SetCanRun(bool run)
+    {
+        canRun = run;
+    }
+
     public void StartCounting()
     {
         StartCoroutine(Counting());

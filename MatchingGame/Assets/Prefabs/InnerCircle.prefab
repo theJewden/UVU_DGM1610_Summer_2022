@@ -300,7 +300,19 @@ MonoBehaviour:
         m_CallState: 2
   noMatchDelayedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b771da3aece2b5c429f2d2f9e14a3b6e, type: 2}
+        m_TargetAssemblyTypeName: GameAction, Assembly-CSharp
+        m_MethodName: RaiseAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   colorList: {fileID: 11400000, guid: b4a15acfb38e36a429c1feeda1275ac3, type: 2}
 --- !u!135 &581773805
 SphereCollider:
